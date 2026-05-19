@@ -1,0 +1,72 @@
+{
+    "swagger": "2.0",
+    "info": {
+    "version": "1.0.0", 
+    "title": "My Persons Project CRUD",
+    "description": "My Persons Project Application API",
+    "license": {
+    "name": "MIT",
+    "url": "https://opensource.org/licenses/MIT"
+    }
+    },
+    "host": "localhost:8000",
+    "basePath": "/",
+    "tags": [
+    {
+    "name": "persons",
+    "description": "API for persons in the system"
+    }
+    ],
+    "schemes": [
+    "http"
+    ],
+    "consumes": [
+    "application/json"
+    ],
+    "produces": [
+    "application/json"
+    ],
+    "paths": {
+        "/api/persons": {
+        "get": {
+        "tags": [
+        "persons"
+        ],
+        "summary": "Get all persons in system",
+        "responses": {
+        "200": {
+        "description": "OK",
+        "schema": {
+        "$ref": "#/definitions/persons"
+        }
+        }
+        }
+        }
+        }
+        },
+         "definitions": {
+        "person": {
+        "required": [
+        "firstname",
+        "lastname",
+        "age"
+        ],
+        "properties": {
+        "firstname": {
+        "type": "string"
+        },
+        "lastname": {
+        "type": "string"
+        },
+        "age": {
+        "type": "number"
+        }
+        }
+        },
+        "persons": {
+        "type": "array",
+        "$ref": "#/definitions/person"
+        }
+        }
+    
+}

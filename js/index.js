@@ -29,6 +29,7 @@ ws.onmessage = (event) => {
 
     if (messages.type === 'users') {
         $('#users').empty();
+        $('#users').append(`<option value="">ALL</option>`); // boradcast
         messages.users.forEach(u => {
             $('#users').append(`<option value="${u}">${u}</option>`);
     });
@@ -52,10 +53,12 @@ ws.onmessage = (event) => {
 
 
 const send = () => {
+    const selectedUser = $('#users').val();
+
     const sending = {
         type: "message",
         nameFrom :  $('#name').val() || '???',
-        nameTo : $('#users').val(),
+        nameTo : selectedUser || null,
         message :  $('#message').val()
     }
 
